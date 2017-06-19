@@ -76,42 +76,48 @@
           <div class="row">
 
             <div class="col-sm-6">
-              <div class="lc.rent">
-                <h4>Rent Home</h4>
-                <table class="table">
-                  <tr>
-                    <th>City</th>
-                    <th>Square Feet</th>
-                    <th>Rent</th>
+              <div class="rent">
+                <div class="lc.rent">
+                  <h4>Rent Home</h4>
+                  <table class="table">
+                    <tr>
+                      <th>City</th>
+                      <th>Square Feet</th>
+                      <th>Rent</th>
 
-                  </tr>
+                    </tr>
 
-                  <tr ng-repeat="listing in lc.rentArray">
-                    <td> {{listing.city}}</td>
-                    <td> {{listing.sqft}}</td>
-                    <td> {{listing.rent}}</td>
-                  </tr>
-                </table>
+                    <tr ng-repeat="listing in lc.resArray" ng-if="listing.rent">
+                      <td> {{listing.city}}</td>
+                      <td> {{listing.sqft}}</td>
+                      <td> {{listing.rent}}</td>
+                    </tr>
+                  </table>
+                </div>
               </div>
             </div>
+
             <div class="col-sm-6">
+              <div class="purchase">
 
-              <div class="lc.purchase">
-                <h4>Purchase Home</h4>
-                <table class="table">
-                  <tr>
-                    <th>City</th>
-                    <th>Square Feet</th>
-                    <th>Cost</th>
-                  </tr>
+                <div class="lc.purchase">
+                  <h4>Purchase Home</h4>
+                  <table class="table">
+                    <tr>
+                      <th>City</th>
+                      <th>Square Feet</th>
+                      <th>Cost</th>
+                    </tr>
 
-                  <tr ng-repeat="listing in lc.purchaseArray">
-                    <td> {{listing.city}}</td>
-                    <td> {{listing.sqft}}</td>
-                    <td> {{listing.cost}}</td>
+                    <tr ng-repeat="listing in lc.resArray" ng-if="listing.cost">
+                      <td> {{listing.city}}</td>
+                      <td> {{listing.sqft}}</td>
+                      <td> {{listing.cost}}</td>
 
-                  </tr>
-                </table>
+                    </tr>
+                  </table>
+                </div>
+
               </div>
             </div>
           </div>
