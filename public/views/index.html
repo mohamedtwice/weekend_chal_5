@@ -6,13 +6,121 @@
   <title>My App</title>
   <script src="vendors/angular.min.js" charset="utf-8"></script>
   <script src="scripts/realEstate.js" charset="utf-8"></script>
+  <script src="scripts/services/listingService.js" charset="utf-8"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles/styles.css">
 </head>
 
 <body ng-app='myApp'>
-  <h1>My app</h1>
-  <div ng-controller='ListingsController as sc'>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">My Real-Estate App</a>
+      </div>
+
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+  <!-- /.container-fluid -->
+
+
+  <div class="container mainbody">
+
+    <h1></h1>
+    <div ng-controller='ListingsController as lc' ng-init='lc.getListings()'>
+      <div class="row">
+
+        <div class="col-xs-12 col-sm-3">
+
+          <div class="search">
+            <h3>View Listings</h3>
+
+            <button class="btn btn-default btn-lg btn-block" ng-click='lc.getListings()'>View All</button>
+          </div>
+
+          <div class="form">
+            <h3>Add Listing</h3>
+            <form>
+              <div class="form-group">
+                <input type='number' ng-model='lc.costIn' placeholder='Cost' />
+              </div>
+              <div class="form-group">
+                <input type='number' ng-model='lc.rentIn' placeholder='Rent' />
+              </div>
+              <div class="form-group">
+                <input type='number' ng-model='lc.sqftIn' placeholder='Square Feet' />
+              </div>
+              <div class="form-group">
+                <input type='text' ng-model='lc.cityIn' placeholder='City' />
+              </div>
+              <button class="btn btn-default btn-lg btn-block" ng-click='lc.postAListing()'>Add Listing</button>
+            </form>
+          </div>
+
+        </div>
+
+        <div class="col-sm-9">
+          <!-- <p ng-repeat="listing in lc.listingsArray">
+            Rent<br /> {{listing.cost}} | {{listing.rent}} | {{listing.sqft}}
+          </p>
+
+          <p ng-repeat="listing in lc.purchase">
+            Puchase<br /> {{listing.cost}} | {{listing.rent}} | {{listing.sqft}}
+          </p> -->
+          <div class="row">
+
+            <div class="col-sm-6">
+              <div class="lc.rent">
+                <h4>Rent Home</h4>
+                <table class="table">
+                  <tr>
+                    <th>City</th>
+                    <th>Square Feet</th>
+                    <th>Rent</th>
+
+                  </tr>
+
+                  <tr ng-repeat="listing in lc.rentArray">
+                    <td> {{listing.city}}</td>
+                    <td> {{listing.sqft}}</td>
+                    <td> {{listing.rent}}</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="col-sm-6">
+
+              <div class="lc.purchase">
+                <h4>Purchase Home</h4>
+                <table class="table">
+                  <tr>
+                    <th>City</th>
+                    <th>Square Feet</th>
+                    <th>Cost</th>
+                  </tr>
+
+                  <tr ng-repeat="listing in lc.purchaseArray">
+                    <td> {{listing.city}}</td>
+                    <td> {{listing.sqft}}</td>
+                    <td> {{listing.cost}}</td>
+
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
 
   </div>
 </body>
